@@ -57,11 +57,7 @@ function setActive() {
 function scrollToSection() {
   navbar.addEventListener('click', function (event) {
     const clicked = document.querySelector('#' + event.target.dataset.nav)
-    if(clicked.dataset.nav=='Home'){
-      window.scrollTo(clicked.getBoundingClientRect().top,0);
-    }else{
-      clicked.scrollIntoView();
-    }
+    clicked.scrollIntoView();
   });
 };
 
@@ -73,4 +69,3 @@ scrollToSection();
 
 // Set sections as active
 setActive();
-
