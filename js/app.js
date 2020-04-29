@@ -40,7 +40,6 @@ function setActive() {
   let active = document.querySelector('li[data-nav="' + section.id + '"]');
   window.addEventListener('scroll', function (event) {
     if(activeSec(section)){
-      console.log(section);
       section.classList.add('activeClass');
       active.classList.add('active__link');         
     }
