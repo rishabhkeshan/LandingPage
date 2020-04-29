@@ -6,9 +6,9 @@ const sections = document.querySelectorAll('section');
 function activeSec(section) {
     let value = section.getBoundingClientRect();
   return (
-    (value.top+value.height) >=41 &&
+    (value.top+value.height) >=40 &&
     value.bottom <=
-    (window.innerHeight || document.documentElement.clientHeight)
+    (window.innerHeight || document.documentElement.clientHeight)-1
   );
 };
 
