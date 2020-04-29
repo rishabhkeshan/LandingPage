@@ -6,9 +6,9 @@ const sections = document.querySelectorAll('section');
 function activeSec(section) {
     let value = section.getBoundingClientRect();
   return (
-    value.top <= 50 &&
+    (value.top+value.height) >=0 &&
     value.bottom <=
-    (window.innerHeight || document.documentElement.clientHeight)
+    (window.innerHeight || document.documentElement.clientHeight)-value.top
   );
 };
 
@@ -40,6 +40,7 @@ function setActive() {
   let active = document.querySelector('li[data-nav="' + section.id + '"]');
   window.addEventListener('scroll', function (event) {
     if(activeSec(section)){
+      console.log(section.id);
       section.classList.add('activeClass');
       active.classList.add('active__link');         
     }
