@@ -3,54 +3,27 @@ const navbar = document.querySelector('#navbar__list');
 const sections = document.querySelectorAll('section');
 
 // get Active Element
-function activeSec() {
-  maxSection = sections[0];
-  min = 10000;
-  for (item of sections) {
-    let value = item.getBoundingClientRect();
-    if (value.top > -500 & value.top < min) {
-      min = value.top;
-      maxSection = item;
-    };
-  };
-  return maxSection;
+function activeSec(section) {
+    let value = section.getBoundingClientRect();
+  return (
+    value.top <= 50 &&
+    value.bottom <=
+    (window.innerHeight || document.documentElement.clientHeight)
+  );
 };
 
 
 // add Elements to the Navbar
 function addNavbarElements() {
-  for (let item of sections) {
-    let section = document.createElement('li');
-    section.className = 'menu__link';
-    section.dataset.nav = item.id;
-    section.innerText = item.dataset.nav;
-    navbar.appendChild(section);
+  for (let section of sections) {
+    let item = document.createElement('li');
+    item.className = 'menu__link';
+    console.log('item id '+item.id);
+    console.log(section.dataset.nav +'section.dataset.nav');
+    item.dataset.nav = section.id;
+    item.innerText = section.dataset.nav;
+    navbar.appendChild(item);
   };
-};
-
-// Add class 'active' to section when near top of viewport
-function setActive() {
-  window.addEventListener('scroll', function (event) {
-    let section = activeSec();
-    section.classList.add('activeClass');
-    // set other sections as inactive
-    for (let val of sections) {
-      if (val.id != section.id & val.classList.contains('activeClass')) {
-        val.classList.remove('activeClass');
-      }
-    }
-    // add active class
-    const active = document.querySelector('li[data-nav="' + section.id + '"]');
-    active.classList.add('active__link');
-    // removing active class from other sections
-    const headers = document.querySelectorAll('.menu__link');
-    for (let item of headers) {
-      // console.log(item);
-      if (item.dataset.nav != active.dataset.nav & item.classList.contains('active__link')) {
-        item.classList.remove('active__link');
-      }
-    };
-  });
 };
 
 // Scroll to the particular click Event
@@ -60,6 +33,32 @@ function scrollToSection() {
     clicked.scrollIntoView();
   });
 };
+
+
+// Add class 'active' to section when near top of viewport
+function setActive() {
+  for(let section of sections)
+  {
+  let active = document.querySelector('li[data-nav="' + section.id + '"]');
+  window.addEventListener('scroll', function (event) {
+    if(activeSec(section)){
+      console.log(section);
+      section.classList.add('activeClass');
+      active.classList.add('active__link');         
+    }
+    else{
+      console.log('Hi');
+      section.classList.remove('activeClass');
+      active.classList.remove('active__link');
+    }
+    // add active class
+
+    // removing active class from other sections
+
+  },false);
+}
+};
+
 
 // Add Navbar Elements
 addNavbarElements();
