@@ -6,8 +6,7 @@ const sections = document.querySelectorAll('section');
 function activeSec() {
     for (let section of sections) {
     let value = section.getBoundingClientRect();
-    if (
-        value.top <= 50 &&
+    if ((value.top + value.height) >= 50 &&
         value.bottom <=
         (window.innerHeight || document.documentElement.clientHeight)
     ){
