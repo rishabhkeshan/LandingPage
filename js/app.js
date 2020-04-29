@@ -18,8 +18,6 @@ function addNavbarElements() {
   for (let section of sections) {
     let item = document.createElement('li');
     item.className = 'menu__link';
-    console.log('item id '+item.id);
-    console.log(section.dataset.nav +'section.dataset.nav');
     item.dataset.nav = section.id;
     item.innerText = section.dataset.nav;
     navbar.appendChild(item);
@@ -47,7 +45,6 @@ function setActive() {
       active.classList.add('active__link');         
     }
     else{
-      console.log('Hi');
       section.classList.remove('activeClass');
       active.classList.remove('active__link');
     }
