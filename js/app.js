@@ -6,7 +6,7 @@ const sections = document.querySelectorAll('section');
 function activeSec(section) {
     let value = section.getBoundingClientRect();
   return (
-    (value.top+value.height) >=50 &&
+    (value.top+value.height) >=41 &&
     value.bottom <=
     (window.innerHeight || document.documentElement.clientHeight)
   );
