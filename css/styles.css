@@ -54,9 +54,9 @@ main {
     margin: 10vh 1em 10vh;
 }
 
-.main-hero {
+.main__hero {
     min-height: 40vh;
-    padding-top: 3em;
+    padding-top: 0em;
 }
 
 section {
@@ -126,7 +126,9 @@ section {
     padding: 1em;
     text-align: left;
 }
-
+#headie{
+    padding:none !important;
+}
 @media only screen and (min-width: 35em) {
     .landing__container {
         max-width: 50em;
